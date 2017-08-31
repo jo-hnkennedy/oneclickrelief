@@ -64,7 +64,14 @@ function addToCart() {
 	//linking the selected item to an item in the item data
 
 	$.getJSON("add.php", {"quantity":quantity, "amazonID":selectedAmazonId}, function(data) {
-		window.open(data.url[0], "_blank");
+		$.ajax({
+     			url: 'index.html',
+     			data: {},
+     			success: function(){
+				window.open(data.url[0], "_blank");
+     			},
+     			async: false
+    		});
 	});
 }
 
