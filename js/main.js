@@ -1,7 +1,9 @@
 var itemData = '[{"price": "20", "amazonID": "B002BW7QCU", "name": "Air Mattresses"}, {"price": "20", "amazonID": "B00XCLFZLS", "name": "Baby Food"}, {"price": "10", "amazonID": "B001U2HRL", "name": "Baby Formula"}, {"price": "10", "amazonID": "B00FW6TNJQ", "name": "Baby Items"}, {"price": "30", "amazonID": "B008KJQMA0", "name": "Baby Wipes"}, {"price": "30", "amazonID": "B00NLLUMOE", "name": "Bed Linens"}, {"price": "20", "amazonID": "B00J7B8T5Q", "name": "Blankets"}, {"price": "30", "amazonID": "B01MYWUDP7", "name": "Canes"}, {"price": "10", "amazonID": "B07434ZKFM", "name": "Charging Cables"}, {"price": "10", "amazonID": "B00HSC9F2C", "name": "Cleaning Supplies"}, {"price": "20", "amazonID": "B00KBZOR9O", "name": "Clothing"}, {"price": "10", "amazonID": "B00TFXH3F8", "name": "Diapers"}, {"price": "20", "amazonID": "B01ADWNVGE", "name": "Food Items"}, {"price": "5", "amazonID": "B00I4R6STS", "name": "Gloves"}, {"price": "20", "amazonID": "B072FL4V84", "name": "Granola Bars"}, {"price": "20", "amazonID": "B000HVVCO0", "name": "Medical Supplies"}, {"price": "10", "amazonID": "B01CLHQZOY", "name": "Non-perishable Food"}, {"price": "30", "amazonID": "B00CFCSVQG", "name": "Packing Supplies"}, {"price": "10", "amazonID": "B019XEY5GS", "name": "Paper Towels"}, {"price": "10", "amazonID": "B00SV4T6O8", "name": "Pasta"}, {"price": "30", "amazonID": "B00BD76MRY", "name": "Pet Items"}, {"price": "10", "amazonID": "B06XKK1N41", "name": "Pillow Cases"}, {"price": "20", "amazonID": "B01E9IPB5C", "name": "Pillows"}, {"price": "10", "amazonID": "B01DN8TPG0", "name": "Sharpies"}, {"price": "10", "amazonID": "B001NKDAKS", "name": "Sheetrock Cutters"}, {"price": "30", "amazonID": "B073S7SZ1L", "name": "Shoes"}, {"price": "10", "amazonID": "B00E4I4XS4", "name": "Socks"}, {"price": "40", "amazonID": "B00C6OV63S", "name": "Suitcases"}, {"price": "20", "amazonID": "B01GTNVWYO", "name": "Toilet Paper"}, {"price": "20", "amazonID": "B00INVCHCC", "name": "Toiletries"}, {"price": "20", "amazonID": "B010S5VXKC", "name": "Towels"}, {"price": "10", "amazonID": "B00ASBOP9S", "name": "Trash Bags"}, {"price": "10", "amazonID": "B01MPYJK69", "name": "Underwear"}, {"price": "10", "amazonID": "B00LLKWVL4", "name": "Water"}, {"price": "100", "amazonID": "B0013Z1Z00", "name": "Wheelchairs"}]';
 
 items = JSON.parse(itemData);
-
+//grid layout of items
+//hide once item is selected
+//display price selector  
 //setting shelter data by pulling the random shelter and its need from the API
 function setShelter(data) {
 	var primaryIndex = Math.floor(Math.random() * data.needs.length);
@@ -19,6 +21,11 @@ function setShelter(data) {
 	data.needs.forEach(function(shelterNeed) {
 		$("#needlist").append('<li><a class="needItem" tabindex="-1">' + shelterNeed + '</a></li>');
 	});
+
+	//data.needs.forEach(function(shelterNeed) {
+	//	$("#needsGallery").append('<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">' + shelterNeed + '</div>');
+	//	console.log('<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">' + shelterNeed + '</div>')
+	//});
 
 	addToCart();
 }
