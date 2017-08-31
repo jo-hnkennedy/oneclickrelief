@@ -19,6 +19,8 @@ function setShelter(data) {
 	data.needs.forEach(function(shelterNeed) {
 		$("#needlist").append('<li><a class="needItem" tabindex="-1">' + shelterNeed + '</a></li>');
 	});
+
+	addToCart();
 }
 
 function setPrice(item) {
@@ -30,6 +32,7 @@ function setPrice(item) {
 }
 
 function addToCart() {
+	console.log("Setting cartURL");
 
 	//getting the price
 	var price = "";
@@ -64,14 +67,7 @@ function addToCart() {
 	//linking the selected item to an item in the item data
 
 	$.getJSON("add.php", {"quantity":quantity, "amazonID":selectedAmazonId}, function(data) {
-		$.ajax({
-     			url: 'index.html',
-     			data: {},
-     			success: function(){
-				window.open(data.url[0], "_blank");
-     			},
-     			async: false
-    		});
+		$("#cartURL").attr("href", data.url[0]);
 	});
 }
 
@@ -109,3 +105,8 @@ $(document).on("click", ".needItem", function() {
 $("li").click(function() {
 	console.log("here");
 });
+
+$(document).on("click", function() {
+	addToCart();
+});
+
