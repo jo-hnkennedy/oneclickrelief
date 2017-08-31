@@ -13,24 +13,24 @@
  }
  
  .text-vertical-center h1{
-     color: lightcyan !important;
+     color: white !important;
  }
  
  .text-vertical-center.heading h4{
     
-     color: lightcyan !important;
+     color: white !important;
  }
  
  .text-vertical-center.heading h2{
      padding-top:1%;
      padding-bottom: 5px;
-     color: lightcyan !important;
+     color: white !important;
  }
  
  .text-vertical-center.heading h2.address{
     padding-top:1%;
 
-    color: lightcyan !important;
+    color: white !important;
 }
 
 .needs{
