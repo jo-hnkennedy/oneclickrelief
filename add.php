@@ -11,13 +11,15 @@ $endpoint = "webservices.amazon.com";
 
 $uri = "/onca/xml";
 
+header('Content-Type: application/json');
+
 $params = array(
     "Service" => "AWSECommerceService",
     "Operation" => "CartCreate",
     "AWSAccessKeyId" => "AKIAI3TEYGLHORQ27CHQ",
     "AssociateTag" => "oneclickrelie-20",
-    "Item-1-ASIN" => "B00FFJ2LXU",
-    "Item-1-Quantity" => "1",
+    "Item.1.ASIN" => $_GET["amazonID"],
+    "Item.1.Quantity" => $_GET["quantity"],
     "ResponseGroup" => "Cart"
 );
 
@@ -47,6 +49,14 @@ $signature = base64_encode(hash_hmac("sha256", $string_to_sign, $secret_key, tru
 // Generate the signed URL
 $request_url = 'http://'.$endpoint.$uri.'?'.$canonical_query_string.'&Signature='.rawurlencode($signature);
 
-echo "Signed URL: \"".$request_url."\"";
+$respXML = file_get_contents($request_url);
+
+$xml = simplexml_load_string($respXML);
+
+$redirectURL = $xml->Cart->PurchaseURL;
+
+$output->url = $redirectURL;
+echo json_encode($output);
+die();
 
 ?>

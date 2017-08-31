@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,24 +23,6 @@
   </head>
 
   <body>
-    <!-- Navigation -->
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
-      <i class="fa fa-bars"></i>
-    </a>
-    <nav id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle">
-          <i class="fa fa-times"></i>
-        </a> 
-        <li>
-          <a class="js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li>
-          <a class="js-scroll-trigger" href="#contact" onclick=$( "#menu-close").click();>Contact</a>
-        </li>
-      </ul>
-    </nav>
-
     <!-- Header -->
     <header class="header" id="top">
       <div class="text-vertical-center">
@@ -48,25 +31,35 @@
         <br>
 	<br>
 	<h3>Send</h3>
-	<form method="get" action="add.php">
-	<div class="btn-group" label="price-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-dark btn-lg js-scroll-trigger price" value="1">$10</button>
-		<button type="button" class="btn btn-dark btn-lg js-scroll-trigger price active" value="2">$20</button>
-		<button type="button" class="btn btn-dark btn-lg js-scroll-trigger price" value="3">$30</button>
+
+	<div class="form-group">
+	<div class="btn-group" id="price-group" role="group" aria-label="Basic example">
+		<button type="checkbox" class="btn btn-dark btn-lg js-scroll-trigger price" id="mainPrice">$10</button>
+		<button type="checkbox" class="btn btn-dark btn-lg js-scroll-trigger price active" id="doublePrice">$20</button>
+		<button type="checkbox" class="btn btn-dark btn-lg js-scroll-trigger price" id="triplePrice">$30</button>
+	</div>
 	</div>
 	<br>
 	<h3>worth of</h3>
-	<div class="btn-group">
-	<select name="item">
-  <button type="button" class="btn btn-dark btn-lg" value="B011DX5G92">Toilet Paper</button>
-    <button class="dropdown-item" href="#" value="B00LN23HHM">Laundry Detergent</button>
-  </div>
-</div>
 
+	<div id="needs">
+	<div class="btn-group">
+    <button class="btn defaultprice"><span id="firstprice"></span></button>
+    <button class="btn dropdown-toggle" data-toggle="dropdown">
+   </button>
+ <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+	<span id="needlist">
+	</span>
+ </ul>
+	</div>
+
+	<h3>to a Texas shelter</h3>
+	<h5 style="color:white">[
+	<span id="shelterName"></span>
+	]</h5>
+	<h4 style="color:white"><span id="shippingAddress"></span></h4>
 	<br>
-	<h3>to a shelter in Houston</h3>
-	<br>
-        <a href="#about" class="btn btn-dark btn-lg js-scroll-trigger">Add Relief To Your Amazon Cart</a>
+        <button class="btn btn-dark btn-lg js-scroll-trigger" onclick="addToCart()">Add Relief To Your Amazon Cart</button>
 	</form>
       </div>
     </header>
@@ -88,8 +81,9 @@
             <h4>
               <strong>built by john kennedy, <a href="http://stationhouston.com/" target="_blank">stationed</a> in houston, texas</strong>
             </h4>
-              <br>oneclickrelief.com is an amazon affiliate (affiliate id: oneclickrelie-20<br> we get up to 10% cash back of any purchase<br>
+              <br>oneclickrelief.com is an amazon affiliate (affiliate id: oneclickrelie-20)<br> we get up to 10% cash back of any purchase<br>
 		all affiliate dollars will be donated to mayor's relief fund
+	<br><br>
             <ul class="list-unstyled">
               <li>
                 <i class="fa fa-envelope-o fa-fw"></i>
@@ -114,26 +108,29 @@
       </a>
     </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/popper/popper.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+	<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/stylish-portfolio.js"></script>
-
-	<script type="text/javascript">
-		
-	$('.price').click(function(){
-		console.log("changing active");
-    		$('.price').removeClass('active');
-    		$(this).addClass('active');
-	});
-	</script>
+    <script src="js/main.js"></script>
 
   </body>
 
 </html>
+
