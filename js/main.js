@@ -16,18 +16,9 @@ function setShelter(data) {
 	$("#firstprice").text(primaryName);
 
 	setPrices(primaryName);
-
-	// otherwise filling the dropdown with needs
-	data.needs.forEach(function(shelterNeed) {
-		$("#needlist").append('<li><a class="needItem" tabindex="-1">' + shelterNeed + '</a></li>');
-	});
-
-	//data.needs.forEach(function(shelterNeed) {
-	//	$("#needsGallery").append('<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">' + shelterNeed + '</div>');
-	//	console.log('<div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">' + shelterNeed + '</div>')
-	//});
-
-	addToCart();
+	
+	
+	addToCart(primaryName);
 }
 
 function setPrice(item) {
@@ -38,7 +29,7 @@ function setPrice(item) {
 	});
 }
 
-function addToCart() {
+function addToCart(primaryName) {
 	console.log("Setting cartURL");
 
 	//getting the price
@@ -53,7 +44,7 @@ function addToCart() {
 	console.log("price=" + price);
 
 	//getting the item that's active in the dropdown
-	var selectedItem = $(".defaultprice").text();
+	var selectedItem = primaryName;
 	console.log("item=" + selectedItem);
 	var selectedAmazonId = "";
 	var itemPrice;
