@@ -24,13 +24,15 @@
 
   <body>
     <!-- Header -->
+  
     <header class="header" id="top">
-      <div class="text-vertical-center">
+      <div class="text-vertical-center heading">
+        <div id="background">
         <h1>One Click Relief</h1>
-	<h3>Give Houston Shelters What They Need</h3>
+	<h4>Give Houston Shelters What They Need</h4>
         <br>
-	<br>
-	<h3>Send</h3>
+	
+	<h2>Send</h2>
 
 	<div class="form-group">
 	<div class="btn-group" id="price-group" role="group" aria-label="Basic example">
@@ -39,28 +41,29 @@
 		<button type="checkbox" class="btn btn-dark btn-lg js-scroll-trigger price" id="triplePrice">$30</button>
 	</div>
 	</div>
-	<br>
-	<h3>worth of</h3>
+
+	<h2>of</h2>
 
 	<div id="needs">
 	<div class="btn-group">
     <button class="btn defaultprice"><span id="firstprice"></span></button>
-    <button class="btn dropdown-toggle" data-toggle="dropdown">
-   </button>
- <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-	<span id="needlist">
-	</span>
- </ul>
-	</div>
+    </div>
 
-	<h3>to a Texas shelter</h3>
-	<h5 style="color:white">[
-	<span id="shelterName"></span>
-	]</h5>
-	<h4 style="color:white"><span id="shippingAddress"></span></h4>
+  </div>
+  
+ 
+
+	<h2 id="address">to:</h2>
+	
+  <button class="btn defaultprice"><span id="shelterName"></span></button>
+  <br>
+  <br>
+  <button class="btn defaultprice"><span id="shippingAddress"></span></button>
+<br>
 	<br>
         <a href="#" class="btn btn-dark btn-lg js-scroll-trigger" id="cartURL" target="_blank">Add Relief To Your Amazon Cart</a>
-	</form>
+  </form>
+</div>
       </div>
     </header>
 
