@@ -7,8 +7,8 @@
 
  .text-vertical-center.heading{
     vertical-align: top !important;
-    padding-top: 10%;
-    padding-bottom: 5%;
+    padding-top: 2%;
+    padding-bottom: 3%;
    
  }
  
@@ -23,30 +23,35 @@
  
  .text-vertical-center.heading h2{
      padding-top:1%;
-     padding-bottom:2%;
+     padding-bottom: 5px;
      color: lightcyan !important;
  }
  
- .btn-group{
-     padding-bottom: 2%;
- }
+ .text-vertical-center.heading h2.address{
+    padding-top:1%;
+
+    color: lightcyan !important;
+}
+
+.needs{
+    padding-bottom: 2px;
+}
  
  #background{
-     background: rgba(255, 255, 255, 0.3);
-     padding-bottom: 5%;
+     background: rgba(255, 255, 255, 0.4);
+     padding-bottom: 12%;
      padding-top: 5%;
      margin-left: 1%;
      margin-right: 1%;
  
  }
  
- .shipAddress{
-     color: lightcyan !important;
+#shippingAddress{
+   
+     font-weight: bold;
  }
  
- .shelterName{
-     color: lightcyan !important;
- }
+
   .gallery-title
   {
       font-size: 36px;
