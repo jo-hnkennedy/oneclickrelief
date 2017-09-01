@@ -1,0 +1,5 @@
+{
+  "sitePath": "../ionic-site",
+  "v2DocsDir": "content/docs",
+  "docsDest": "../ionic-site/content/docs"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "phpjs",
+  "homepage": "https://github.com/kvz/phpjs",
+  "version": "2.0.8",
+  "_release": "2.0.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.8",
+    "commit": "f7ff630f223206aa1cb4f8499a36d4dbe67e399d"
+  },
+  "_source": "https://github.com/kvz/phpjs.git",
+  "_target": "^2.0.8",
+  "_originalSource": "phpjs",
+  "_direct": true
+}

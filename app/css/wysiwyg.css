@@ -1,0 +1,123 @@
+.container.ui > div.row {
+    width: 49%;
+    display:inline-block;
+    margin:0px;
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+    vertical-align: top;
+    position:relative;
+}
+.container.ui > div.row #iframe {
+    width: 100%;
+    height: 125vh;
+    display: block;
+    box-sizing: border-box;
+    border: 0px;
+    position: absolute;
+    top: 60px;
+    left: 0px;
+}
+ul.wysihtml5-toolbar>li {
+    float: none;
+    display: inline-block;
+    list-style: none;
+    margin: 0px;
+    text-align: left;
+}
+.dropdown-buttons {
+    min-width: 321px;
+    padding: 7px;
+    left: -125px;
+}
+
+body.wysihtml5-editor {
+    padding: 10px;
+    margin: 0px;
+    height: 100%;
+    border: 0;
+}
+iframe.wysihtml5-sandbox {
+    padding: 0px!important;
+    min-height: 500px!important;
+}
+.bootstrap-wysihtml5-insert-link-url.form-control {
+    max-width: 96%;
+    margin: 0px auto;
+}
+.wysihtml5-toolbar .dropdown-menu li {
+    cursor: pointer;
+    position: relative;
+    padding: 3px;
+}
+.wysihtml5-toolbar .dropdown-menu li.divider {
+    padding: 1px;
+}
+.wysihtml5-toolbar .dropdown-menu li:before {
+    content: '';
+    display: block;
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+}
+.wysihtml5-toolbar .dropdown-menu li:hover {
+    background: #eef4f7;
+}
+.wysihtml5-toolbar .dropdown-menu li > div {
+    margin: 5px;
+}
+.wysihtml5-toolbar li > a.btn,
+.wysihtml5-toolbar li > .btn-group a {
+    border-radius: 0px!important;
+}
+.wysihtml5-sandbox {
+    margin-top:10px!important;
+}
+.dropdown-menu .divider {
+    height: 1px;
+    margin: 2px 0;
+}
+.dropdown-component,
+.dropdown-progress,
+.dropdown-dropdown,
+.dropdown-pagination {
+    min-width: 321px;
+    padding: 7px;
+    left: -125px;
+    min-height: 40px;
+}
+.dropdown-label li,
+.dropdown-dropdown li {
+    display: inline-block;
+    text-align: center;
+    float:left;
+    width: 50%;
+    margin: 0px;
+    padding: 5px;
+}
+.dropdown-progress .progress {
+    margin: 3px;
+    cursor:pointer;
+}
+.dropdown-header {
+    display: block;
+    padding: 10px 0px 2px 3px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    color: #777;
+}
+.dropdown-pagination .pager,
+.dropdown-pagination .pagination {
+    margin: 5px;
+}
+.dropdown-pagination .pagination-lg>li>a {
+    padding: 6px 11px;
+}
+
+.dropdown-box-item .col-lg-3.col-md-6.text-center {
+    width: 100%;
+}

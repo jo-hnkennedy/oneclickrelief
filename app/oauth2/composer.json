@@ -1,0 +1,14 @@
+{
+    "name": "cleverhttp/clever",
+    "description": "clever oath 2",
+    "authors": [
+        {
+            "name": "fortunevieyra",
+            "email": "fortunevieyra@live.com"
+        }
+    ],
+    "require": {
+        "league/oauth2-client": "^2.2",
+        "schoolrunner/oauth2-clever": "^2.0"
+    }
+}

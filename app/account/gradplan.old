@@ -1,0 +1,164 @@
+<?php
+
+include_once '../include/config.php';
+include_once '../include/session.php';
+include_once '../include/function.php';
+
+//check user
+if( !$user ) {
+    header('Location: login.php');
+}
+//set menu type
+$menu_type = $account['type'];
+//check for other types
+if( !in_array( $menu_type, $restrict_types ) ) {
+    $menu_type = 'account';
+}
+
+//set dashboard
+$page_name = 'gradplan';
+$page_title = 'Graduation Plan';
+$page_excerpt = 'The plan to help you graduate';
+
+//set page options
+$page_options = array(
+    'table_multiple' => array(
+        'gradtrack' => array(
+            'title' => 'Graduation Tracker',
+            'description' => '<div>Track your graduation progress</div><br>
+                <span class="green bg-white p10">*Completed</span> 
+                <span class="bg-white orange p10">*Incomplete</span>
+                <span class="bg-white red p10">*Required</span>
+            ',
+            'main_class' => 'col-md-10 text-left bg-white middle p20',
+            'table_class' => 'text-left table table-striped table-responsive table-condensed ',
+            'thead_class' => array('text-left','text-left','text-left'),
+            'tdata_class' => array('bold text-left','green text-left','green text-left'),
+            'table_head' => array('Discipline','Foundation HSP','Distinguished Achievement Plan'),
+            'table_data' => array(
+                array( 
+                    'English Language Arts', 
+                    '<div>English I</div><div>English II</div><div>English III</div></div><div><div class="orange">An Advanced English course*</div>',
+                    '<div>English I</div><div>English II</div><div>English III</div></div><div><div class="orange">English IV**</div>' 
+                ),
+                array( 
+                    'Mathematics', 
+                    '<div>Algebra I</div><div>Geometry</div></div><div><div class="orange">An Advanced Math course*</div>',
+                    '<div>Algebra I</div><div>Geometry</div><div>Algebra II</div></div><div><div class="orange">An Additional Math Credit*</div>' 
+                ),
+                array( 
+                    'Science', 
+                    '<div>Biology</div><div>IPC or an advanced science course</div><div>An advanced science course</div>',
+                    '<div>Biology</div><div>Chemistry</div></div><div><div class="orange">Physics*</div></div><div><div>An Additional Science Credit</div>' 
+                ),
+                array( 
+                    'Social Studies', 
+                    '<div>U.S. History</div><div class="orange">U.S. Government (half credit)*</div><div class="orange">Economics (half credit)*</div><div>World History or World Geography</div>',
+                    '<div>U.S. History</div><div class="orange">U.S. Government (half credit)*</div><div class="orange">Economics (half credit)*</div><div>World History</div>'
+                ),
+                array( 
+                    'Physical Education', 
+                    '<div>One Credit</div>',
+                    '<div>One Credit</div>' 
+                ),
+                array( 
+                    'Languages Other Than English', 
+                    '<div>Two Credits in the Same Language (including Comp Sci</div>',
+                    '<div>Three Credits in the Same Language (including Comp Sci)</div>' 
+                ),
+                array( 
+                    'Fine Arts', 
+                    '<div>One Credit</div>',
+                    '<div>One Credit</div>' 
+                ),
+                array( 
+                    'Speech', 
+                    '<div class="orange">Demonstrated proficiency*</div>',
+                    '<div class="orange">Communication Applications or Professional Communications*</div>' 
+                ),
+                array( 
+                    'Electives', 
+                    '<div>You have 9 out of 5 needed credits</div>',
+                    '<div>You have 9 out of 4.5 needed credits</div>' 
+                )
+            )
+        ),
+        'cte_progress' => array(
+            'title' => 'CTE Progress',
+            'description' => 'Marketing Pathway / Fashion Marketing Sequence',
+            'main_class' => 'col-md-10 text-left bg-white middle p20',
+            'table_class' => 'text-left table table-striped table-responsive table-condensed ',
+            'thead_class' => array('text-left'),
+            'tdata_class' => array('text-left orange'),
+            'table_head' => array('Incomplete Courses'),
+            'table_data' => array(
+                array( 'Principles of Business, Marketing, and Finance' ),
+                array( 'Fashion Marketing' ),
+                array( 'Marketing Dynamics' ),
+                array( 'Practicum in Marketing Dynamics' ),
+            )
+        ),
+        'your_courses' => array(
+            'title' => 'Your Courses',
+            'description' => 'A list of your completed courses by class period and teacher.',
+            'main_class' => 'col-md-10 text-left bg-white middle p20',
+            'table_class' => 'text-left table table-striped table-responsive table-condensed ',
+            'thead_class' => array('text-left','text-left','text-left','text-left'),
+            'tdata_class' => array('text-left','text-left','text-left','text-left'),
+            'table_head' => array('Subject','Course','Period','Teacher'),
+	    'table_data' => "<table border='1' style='width:100%'><h3>Your Courses</h3><tr><td><b>Subject</b></td><td><b>Course</b></td><td><b>Score</td><td><b>Credit</td><td><b>Subject</td><td><b>Course</b></td><td><b>Score</b></td><td><b>Credit</b></td></tr></b><tr><td>Language Arts</td><td> ENG 1 A</td><td>79</td><td>0.5</td><td>PE/Equivalent</td><td> PEFOUND</td><td>87</td><td>0.5</td></tr><tr><td>Language Arts</td><td> ENG 1 B</td><td>74</td><td>0.5</td><td>PE/Equivalent</td><td> PEAA</td><td>88</td><td>0.5</td></tr><tr><td>Language Arts</td><td> ENG 2 A</td><td>78</td><td>0.5</td><td>Other Languages</td><td> SPAN 2 A:E</td><td>94</td><td>0.5</td></tr><tr><td>Language Arts</td><td> ENG 2 B</td><td>72</td><td>0.5</td><td>Other Languages</td><td> SPAN 2 B:E</td><td>94</td><td>0.5</td></tr><tr><td>Language Arts</td><td> ENG 3 A</td><td>76</td><td>0.5</td><td>Other Languages</td><td> SPAN 3 A:Q</td><td>75</td><td>0.5</td></tr><tr><td>Speech</td><td> COMMAPP</td><td>88</td><td>0.5</td><td>Other Languages</td><td> SPAN 3 B:Q</td><td>90</td><td>0.5</td></tr><tr><td>Mathematics</td><td> ALG 1 A</td><td>90</td><td>0.5</td><td>Other Languages</td><td> SPAN 1 A:E</td><td>93</td><td>0.5</td></tr><tr><td>Mathematics</td><td> ALG 1 B</td><td>88</td><td>0.5</td><td>Other Languages</td><td> SPAN 1 B:E</td><td>93</td><td>0.5</td></tr><tr><td>Mathematics</td><td> GEOM A</td><td>67</td><td>0.5</td><td>Other Languages</td><td> APSPALAN A:P</td><td>79</td><td>0.5</td></tr><tr><td>Mathematics</td><td> GEOM B</td><td>76</td><td>0.5</td><td>Other Languages</td><td> APSPALAN B:P</td><td>90</td><td>0.5</td></tr><tr><td>Mathematics</td><td> ALG 2 A</td><td>75</td><td>0.5</td><td>Fine Arts</td><td> MUS1HIST A</td><td>97</td><td>0.5</td></tr><tr><td>Science</td><td> BIO A</td><td>76</td><td>0.5</td><td>Fine Arts</td><td> MUS1HIST B</td><td>96</td><td>0.5</td></tr><tr><td>Science</td><td> BIO B</td><td>67</td><td>0.0</td><td>Fine Arts</td><td> ART 1 A</td><td>79</td><td>0.5</td></tr><tr><td>Science</td><td> BIO B:R</td><td>78</td><td>0.5</td><td>Fine Arts</td><td> ART 1 B</td><td>81</td><td>0.5</td></tr><tr><td>Science</td><td> CHEM A</td><td>76</td><td>0.5</td><td>Fine Arts</td><td> MUS1INEN A</td><td>83</td><td>0.5</td></tr><tr><td>Science</td><td> CHEM B</td><td>81</td><td>0.5</td><td>Fine Arts</td><td> DANCE 1 A</td><td>86</td><td>0.5</td></tr><tr><td>Science</td><td> PHYSICS A</td><td>73</td><td>0.5</td><td>Career Tech Education</td><td> PRINAFNR A</td><td>77</td><td>0.5</td></tr><tr><td>Social Studies</td><td> W GEO A</td><td>74</td><td>0.5</td><td>Career Tech Education</td><td> PRINAFNR B</td><td>71</td><td>0.5</td></tr><tr><td>Social Studies</td><td> W GEO B</td><td>71</td><td>0.5</td><td>Career Tech Education</td><td> PRBIOSCI A:X</td><td>70</td><td>0.5</td></tr><tr><td>Social Studies</td><td> W HIST A</td><td>74</td><td>0.5</td><td>Career Tech Education</td><td> PRBIOSCI B:X</td><td>73</td><td>0.5</td></tr><tr><td>Social Studies</td><td> W HIST B</td><td>75</td><td>0.5</td><td>Career Tech Education</td><td> HUMBODSY A:X</td><td>75</td><td>0.5</td></tr><tr><td>Social Studies</td><td> US HIST A</td><td>75</td><td>0.5</td><td></td><td> </td><td></td><td></td></tr></table>",
+            /* 'table_data' => array(
+            #    array( 'Language Arts', 'ENG 1 A', '1', 'Mrs. Robinson' ),
+            #    array( 'Language Arts', 'ENG 1 B', '2', 'Mrs. Robinson' ),
+            #    array( 'Language Arts', 'READ 1 A', '3', 'Betty Sue' ),
+            #    array( 'Language Arts', 'READ 1 B', '4', 'Betty Sue' ),
+            #    array( 'Language Arts', 'ENG 2 A', '5', 'Mr. Skinner' ),
+                array( 'Language Arts', 'ENG 2 B', '6', 'Mr. Skinner' ),
+                array( 'Language Arts', 'ENG 3 A', '7', 'Mr. Skinner' ),
+                array( 'Language Arts', 'ENG 3 B', '8', 'Mr. Skinner' ),
+                array( 'Language Arts', 'ENG 4 A', '1', 'Mr. Skinner' ),
+                array( 'Language Arts', 'ENG 5 B', '2', 'Mr. Skinner' ),
+                array( 'Speech', 'COMMAPP', '7', 'Mr. Smith' )
+            )*/
+        )
+    )
+);
+?>
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <?php importModule('main_header'); ?> 
+
+    <body id="page-top" class="loggedin hold-transition skin-<?php echo $account['layout']['skin_color']; ?> sidebar-mini">
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                                <?php importModule('navbar_header'); ?>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <?php echo setMenu( $menu_type,  $top_menu, $page_name, $account ); ?>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="main-header">
+            <a href="#" class="logo"><?php echo ucwords($page_name); ?></a>
+            <?php importModule('section_topnav'); ?>
+        </header>
+        <div class="wrapper">
+
+            <?php importModule('sidebar_left'); ?> 
+            <div class="content-wrapper">
+                <?php importModule('content_header'); ?> 
+                <section class="content">
+                    <?php importModule('table_multiple'); ?> 
+                </section>
+            </div>
+            <?php importModule('section_footer'); ?> 
+            <?php importModule('sidebar_right'); ?> 
+        </div>
+
+        <?php importModule('main_footer'); ?> 
+
+    </body>
+
+    </html>

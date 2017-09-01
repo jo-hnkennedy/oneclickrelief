@@ -1,0 +1,16 @@
+.main-header,
+.main-sidebar,
+.main-footer,
+.content-header>.breadcrumb, #mainNav {
+    display:none!important;
+}
+
+.sidebar-mini .content-wrapper, 
+.sidebar-mini .right-side, 
+.sidebar-mini .main-footer {
+    margin-left: 0px !important;
+    z-index: 840;
+}
+.loggedin {
+    padding-top:0px;
+}
