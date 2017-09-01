@@ -4,6 +4,145 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+
+/** media queries for mobile */
+
+@media only screen and (max-width: 500px) and (min-width: 415px) {
+    #price-group {
+        padding-left: 25%;
+    }
+    #needs {
+        padding-left: 19%;
+    }
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        width: 230px;
+    }
+    .background {
+        background: rgba(0, 0, 0, 0.2);
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+}
+
+@media only screen and (max-width: 360px) and (min-width: 321px) {
+    #price-group {
+        padding-left: 23% !important;
+        padding-bottom: 4%;
+    }
+    #needs {
+        padding-left: 14% !important;
+    }
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        width: 230px;
+    }
+    .text-vertical-center.heading h2#donate {
+        margin-top: -12%
+    }
+    .background {
+        background: rgba(0, 0, 0, 0.2) !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    .btn-lg.js-scroll-trigger.addReliefRectangle {
+        font-size: inherit;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #price-group {
+        padding-left: 19% !important;
+        padding-bottom: 1%
+    }
+    .text-vertical-center.heading h2#donate {
+        margin-top: -12%;
+        font-size: x-large;
+    }
+    .text-vertical-center.heading h2#priceSelect {
+        font-size: x-large;
+        padding-top: 2%;
+    }
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        width: 230px;
+    }
+    #needs {
+        padding-left: 9% !important;
+        margin-bottom: -5%;
+    }
+    .btn-lg.js-scroll-trigger.addReliefRectangle {
+        font-size: inherit;
+    }
+    .background {
+        background: rgba(0, 0, 0, 0.2) !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #address {
+        margin-top: -12%;
+    }
+}
+
+@media only screen and (max-width: 375px) and (min-width: 361px) {
+    #price-group {
+        padding-left: 24%;
+        padding-bottom: 5%
+    }
+    .text-vertical-center.heading h2#donate {
+        margin-top: -12%
+    }
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        width: 230px;
+    }
+    #needs {
+        padding-left: 17% !important;
+    }
+    .background {
+        background: rgba(0, 0, 0, 0.2) !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+}
+
+@media only screen and (max-width: 414px) and (min-width: 376px) {
+    #price-group {
+        padding-left: 26%;
+        padding-bottom: 5%
+    }
+    .text-vertical-center.heading h2#donate {
+        margin-top: -7%
+    }
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        width: 230px;
+    }
+    #needs {
+        display: inline-block;
+        padding-left: 19%;
+    }
+    .background {
+        background: rgba(0, 0, 0, 0.2) !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+    #address {
+        margin-top: -3%;
+    }
+}
+
+
+/**end media queries */
+
+
+/*custom styles*/
+
 .text-vertical-center.heading {
     vertical-align: top !important;
     padding-top: 2%;
@@ -143,6 +282,85 @@
     margin-bottom: 30px;
     background-color: white;
 }
+
+
+/* Global Styles */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vertical-center h1 {
+    font-size: 4.5em;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.gallery-title {
+    font-size: 36px;
+    color: #42B32F;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 70px;
+}
+
+.gallery-title:after {
+    content: "";
+    position: absolute;
+    width: 7.5%;
+    left: 46.5%;
+    height: 45px;
+    border-bottom: 1px solid #5e5e5e;
+}
+
+.filter-button {
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 5px;
+    text-align: center;
+    color: #42B32F;
+    margin-bottom: 30px;
+}
+
+.filter-button:hover {
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #42B32F;
+}
+
+.btn-default:active .filter-button:active {
+    background-color: #42B32F;
+    color: white;
+}
+
+.port-image {
+    width: 100%;
+}
+
+.gallery_product {
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+
+/*vendor*/
 
 
 /* Global Styles */
