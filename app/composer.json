@@ -1,6 +1,0 @@
-{
-    "require": {
-        "league/oauth2-client": "^2.2",
-        "schoolrunner/oauth2-clever": "^2.0"
-    }
-}
