@@ -17,15 +17,10 @@ function setShelter(data) {
 
 	// otherwise filling the dropdown with needs
 	data.needs.forEach(function(shelterNeed) {
-		$("#needlist").append('<li><a tabindex="-1">' + shelterNeed + '</a></li>');
+		$("#needlist").append('<li><a class="needItem" tabindex="-1">' + shelterNeed + '</a></li>');
 });
 
 	
-
-	
-
-
-
 	addToCart();
 }
 
