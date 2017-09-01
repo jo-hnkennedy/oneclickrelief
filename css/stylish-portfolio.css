@@ -57,6 +57,7 @@
     padding-top: 10px !important;
     padding-bottom: 11px !important;
     background: white;
+    color: #164EB4;
  }
 
  .btn.dropdown-toggle{
@@ -73,11 +74,13 @@
  .btn-lg.js-scroll-trigger.price{
      border: 0;
      background: #9ED5B0;
+     color: white;
  }
 
   .btn-lg.js-scroll-trigger.price.active{
       border: 0;
      background: #298446;
+     color: white;
  }
 
 .btn.itemText{
