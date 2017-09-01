@@ -5,6 +5,152 @@
  */
 
 
+ /** media queries for mobile */
+
+ @media only screen and (max-width: 500px) and (min-width: 415px) {
+    #price-group{
+        padding-left:25%;
+    }
+    #needs{
+        padding-left:19%;
+    }
+   
+    .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle){
+        width:230px;
+    
+    }
+    .background{
+        background: rgba(0, 0, 0, 0.2);
+        width: 100%  !important;
+        height: 100%  !important;
+        margin: 0px  !important;
+        padding: 0px  !important;
+    }
+}
+
+@media only screen and (max-width: 360px) and (min-width: 321px) {
+    #price-group{
+        padding-left:23% !important;
+        padding-bottom: 4%;
+    }
+    #needs{
+        padding-left:14% !important;
+    }
+    .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle){
+        width:230px;
+    
+    }
+    .text-vertical-center.heading h2#donate{
+        margin-top: -12%
+    }
+    .background{
+        background: rgba(0, 0, 0, 0.2)  !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0px  !important;
+        margin: 0px  !important;
+    }
+    .btn-lg.js-scroll-trigger.addReliefRectangle{
+        font-size: inherit;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #price-group{
+        padding-left:19% !important;
+        padding-bottom:1%
+    }
+    .text-vertical-center.heading h2#donate{
+        margin-top: -12%;
+        font-size: x-large;
+    }
+
+    .text-vertical-center.heading h2#priceSelect{      
+        font-size: x-large;
+        padding-top:2%;
+    }
+    .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle){
+        width:230px;
+    
+    }
+    #needs{
+        padding-left:9% !important;
+        margin-bottom: -5%;
+    }
+    .btn-lg.js-scroll-trigger.addReliefRectangle{
+       font-size: inherit;
+    }
+    .background{
+        background: rgba(0, 0, 0, 0.2)  !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0px  !important;
+        margin: 0px  !important;
+    }
+
+    #address{
+        margin-top: -12%;
+    }
+}
+
+@media only screen and (max-width: 375px) and (min-width: 361px){
+    #price-group{
+        padding-left:24%;
+        padding-bottom:5%
+    }
+    .text-vertical-center.heading h2#donate{
+        margin-top: -12%
+    }
+    .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle){
+        width:230px;
+    
+    }
+    #needs{
+        padding-left:17% !important;
+    }
+    .background{
+        background: rgba(0, 0, 0, 0.2)  !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0px  !important;
+        margin: 0px  !important;
+    }
+}
+
+@media only screen and (max-width: 414px) and (min-width: 376px) {
+    #price-group{
+        padding-left:26%;
+        padding-bottom:5%
+    }
+    .text-vertical-center.heading h2#donate{
+        margin-top: -7%
+    }
+    .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle){
+        width:230px;
+    
+    }
+    #needs{
+        display: inline-block;
+        padding-left: 19%;
+     
+   }
+   .background{
+    background: rgba(0, 0, 0, 0.2)  !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0px  !important;
+    margin: 0px  !important;
+    }
+
+    #address{
+        margin-top: -3%;
+    }
+}
+
+
+   /**end media queries */
+
+/*custom styles*/
  .text-vertical-center.heading{
     vertical-align: top !important;
     padding-top: 2%;
@@ -37,12 +183,13 @@
     padding-bottom: 2px;
 }
  
- #background{
+ .background{
      background: rgba(0, 0, 0, 0.2);
      padding-bottom: 12%;
      padding-top: 5%;
      margin-left: 1%;
      margin-right: 1%;
+     height: 100%;
  
  }
  
@@ -151,7 +298,7 @@
  
  
  
- 
+ /*vendor*/
  /* Global Styles */
  
  html,
