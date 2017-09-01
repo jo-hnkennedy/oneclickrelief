@@ -4,111 +4,141 @@ items = JSON.parse(itemData);
 
 //setting shelter data by pulling the random shelter and its need from the API
 function setShelter(data) {
-	var primaryIndex = Math.floor(Math.random() * data.needs.length);
-	var primaryName = data.needs[primaryIndex]
-	data.needs.splice(primaryIndex);
-	$("#shelterName").text(data.name);
-	$("#shippingAddress").text(data.address);
+    var primaryIndex = Math.floor(Math.random() * data.needs.length);
+    var primaryName = data.needs[primaryIndex]
+    data.needs.splice(primaryIndex);
+    $("#shelterName").text(data.name);
+    $("#shippingAddress").text(data.address);
 
-	// making the default need primaryName
-	$("#firstprice").text(primaryName);
+    // making the default need primaryName
+    $("#firstprice").text(primaryName);
 
-	setPrices(primaryName);
+    setPrices(primaryName);
 
-	// otherwise filling the dropdown with needs
-	console.log("filling dropdown");
-	items.forEach(function(item) {
-		$("#needlist").append('<li><a class="needItem" tabindex="-1">' + item["name"] + '</a></li>');
-});
+    // otherwise filling the dropdown with needs
+    console.log("filling dropdown");
+    items.forEach(function(item) {
+        $("#needlist").append('<li><a class="needItem" tabindex="-1">' + item["name"] + '</a></li>');
+    });
 
-	
-	addToCart();
+    var clipBoard = new Clipboard('#copy_button');
+    clipBoard.on('success', function(e) {
+        e.clearSelection();
+        showTooltip(e.trigger, 'Copied!');
+    });
+    clipBoard.on('error', function(e) {
+        showTooltip(e.trigger, fallbackMessage(e.action));
+    });
+    addToCart();
 }
 
 function setPrice(item) {
-	items.forEach(function(element) {
-		if(item === element["name"]) {
-			console.log(item);
-		}
-	});
+    items.forEach(function(element) {
+        if (item === element["name"]) {
+            console.log(item);
+        }
+    });
 }
 
 function addToCart() {
-	console.log("Setting cartURL");
+    console.log("Setting cartURL");
 
-	//getting the price
-	var price = "";
-	$(".price").each(function() {
-		if ($(this).hasClass("active")) {
-			price = $(this).text();
-		}	
-	});
-		
-	price = parseInt(price.substr(1));	
-	console.log("price=" + price);
+    //getting the price
+    var price = "";
+    $(".price").each(function() {
+        if ($(this).hasClass("active")) {
+            price = $(this).text();
+        }
+    });
 
-	//getting the item that's active in the dropdown
-	var selectedItem = $(".defaultprice").text();
-	console.log("item=" + selectedItem);
-	var selectedAmazonId = "";
-	var itemPrice;
+    price = parseInt(price.substr(1));
+    console.log("price=" + price);
 
-	items.forEach(function(element) {
-		if(selectedItem === element["name"]) {	
-			console.log("Found item");
-			selectedAmazonId = element["amazonID"];
-			itemPrice = parseInt(element["price"]);
-		}
-	});	
+    //getting the item that's active in the dropdown
+    var selectedItem = $(".defaultprice").text();
+    console.log("item=" + selectedItem);
+    var selectedAmazonId = "";
+    var itemPrice;
 
-	var quantity = parseInt(price / itemPrice);
+    items.forEach(function(element) {
+        if (selectedItem === element["name"]) {
+            console.log("Found item");
+            selectedAmazonId = element["amazonID"];
+            itemPrice = parseInt(element["price"]);
+        }
+    });
 
-	console.log(selectedAmazonId);
-	console.log(quantity);
+    var quantity = parseInt(price / itemPrice);
 
-	//linking the selected item to an item in the item data
+    console.log(selectedAmazonId);
+    console.log(quantity);
 
-	$.getJSON("add.php", {"quantity":quantity, "amazonID":selectedAmazonId}, function(data) {
-		$("#cartURL").attr("href", data.url[0]);
-	});
+    //linking the selected item to an item in the item data
+
+    $.getJSON("add.php", { "quantity": quantity, "amazonID": selectedAmazonId }, function(data) {
+        $("#cartURL").attr("href", data.url[0]);
+    });
 }
 
 function setPrices(selectedItem) {
-	//getting prices on item
-	items.forEach(function(item) {
-		if (item["name"] === selectedItem) {
-			console.log(item);
-			$("#mainPrice").text("$" + item["price"]);
-			$("#doublePrice").text("$" + (2 * parseInt(item["price"])));
-			$("#triplePrice").text("$" + (3 * parseInt(item["price"])));
-		}
-	});	
+    //getting prices on item
+    items.forEach(function(item) {
+        if (item["name"] === selectedItem) {
+            console.log(item);
+            $("#mainPrice").text("$" + item["price"]);
+            $("#doublePrice").text("$" + (2 * parseInt(item["price"])));
+            $("#triplePrice").text("$" + (3 * parseInt(item["price"])));
+        }
+    });
 }
 
-$('.price').click(function(){
-	console.log("changing active");
-	$('.price').removeClass('active');
-	$(this).addClass('active');
+$('.price').click(function() {
+    console.log("changing active");
+    $('.price').removeClass('active');
+    $(this).addClass('active');
 });
 
-$.getJSON("http://www.collegehaxcess.com/houstonian/api.php", function (data) {
-	setShelter(data);
+$.getJSON("http://www.collegehaxcess.com/houstonian/api.php", function(data) {
+    setShelter(data);
 });
 
 $(document).on("click", ".needItem", function() {
-	//setting the default price to the name
-	console.log("setting default price to " + $(this).text());
-	$(".defaultprice:first-child").text($(this).text());
-	$(".defaultprice:first-child").val($(this).text());
-	$("#firstprice").val($(this).text());
-	setPrices($(this).text());
+    //setting the default price to the name
+    console.log("setting default price to " + $(this).text());
+    $(".defaultprice:first-child").text($(this).text());
+    $(".defaultprice:first-child").val($(this).text());
+    $("#firstprice").val($(this).text());
+    setPrices($(this).text());
 
 });
 
 $("li").click(function() {
-	console.log("here");
+    console.log("here");
 });
 
-$(document).on("click", function() {
-	addToCart();
+$(document).on("click", "#cartURL", function() {
+    addToCart();
 });
+
+var btns = document.querySelectorAll('#copy_button');
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('mouseleave', clearTooltip);
+    btns[i].addEventListener('blur', clearTooltip);
+}
+
+function clearTooltip(e) {
+    e.currentTarget.setAttribute('class', 'btn');
+    e.currentTarget.removeAttribute('aria-label');
+}
+
+function showTooltip(elem, msg) {
+    elem.setAttribute('class', 'btn tooltipped tooltipped-s tooltipped-no-delay');
+    elem.setAttribute('aria-label', msg);
+}
+
+function fallbackMessage(action) {
+    var actionMsg = '';
+    var actionKey = (action === 'cut' ? 'X' : 'C');
+    if (/iPhone|iPad/i.test(navigator.userAgent)) { actionMsg = 'No support :('; } else if (/Mac/i.test(navigator.userAgent)) { actionMsg = 'Press ⌘-' + actionKey + ' to ' + action; } else { actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action; }
+    return actionMsg;
+}
