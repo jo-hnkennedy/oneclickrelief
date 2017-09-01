@@ -8,7 +8,7 @@ function setShelter(data) {
 	var primaryName = data.needs[primaryIndex]
 	data.needs.splice(primaryIndex);
 	$("#shelterName").text(data.name);
-	$("#shippingAddress").text("SHIP TO: " + data.address);
+	$("#shippingAddress").text(data.address);
 
 	// making the default need primaryName
 	$("#firstprice").text(primaryName);
@@ -18,8 +18,9 @@ function setShelter(data) {
 	// otherwise filling the dropdown with needs
 	data.needs.forEach(function(shelterNeed) {
 		$("#needlist").append('<li><a class="needItem" tabindex="-1">' + shelterNeed + '</a></li>');
-	});
+});
 
+	
 	addToCart();
 }
 
@@ -109,4 +110,3 @@ $("li").click(function() {
 $(document).on("click", function() {
 	addToCart();
 });
-

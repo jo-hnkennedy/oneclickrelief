@@ -25,44 +25,55 @@
   <body>
     <!-- Header -->
   
-    <header class="header" id="top">
-      <div class="text-vertical-center heading">
-        <div id="background">
+  <header class="header" id="top">
+    <div class="text-vertical-center heading">
+      <div id="background">
         <h1>One Click Relief</h1>
-	<h4>Give Houston Shelters What They Need</h4>
-        <br>
-	
-	<h2>Send</h2>
-
-	<div class="form-group">
-	<div class="btn-group" id="price-group" role="group" aria-label="Basic example">
-		<button type="checkbox" class="btn btn-dark btn-lg js-scroll-trigger price" id="mainPrice">$10</button>
-		<button type="checkbox" class="btn btn-dark btn-lg js-scroll-trigger price active" id="doublePrice">$20</button>
-		<button type="checkbox" class="btn btn-dark btn-lg js-scroll-trigger price" id="triplePrice">$30</button>
-	</div>
-	</div>
-
-	<h2>of</h2>
-
-	<div id="needs">
-	<div class="btn-group">
-    <button class="btn defaultprice"><span id="firstprice"></span></button>
-    </div>
-
-  </div>
-  
- 
-
-	<h2 id="address">to:</h2>
-	
-  <button class="btn defaultprice"><span id="shelterName"></span></button>
+	      <h4>Give Houston Shelters What They Need</h4>
   <br>
-  <br>
-  <button class="btn defaultprice"><span id="shippingAddress"></span></button>
-<br>
 	<br>
-        <a href="#" class="btn btn-dark btn-lg js-scroll-trigger" id="cartURL" target="_blank">Add Relief To Your Amazon Cart</a>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <h2 class="col-12 col-md-auto">DONATE</h2>
+
+
+      <div class="btn-group" id="price-group" role="group" aria-label="Basic example">
+        <button type="checkbox" class="btn-lg js-scroll-trigger price" id="mainPrice">$10</button>
+        <button type="checkbox" class="btn-lg js-scroll-trigger price active" id="doublePrice">$20</button>
+        <button type="checkbox" class="btn-lg js-scroll-trigger price" id="triplePrice">$30</button>
+      
+      </div>
+
+      <h2 class="col-12 col-md-auto">WORTH OF</h2>
+        <div id="needs">
+              <div class="btn-group">
+                    <button class="btn defaultprice"><span id="firstprice"></span></button>
+              -     <button class="btn dropdown-toggle" id="dropdownArrow" data-toggle="dropdown">
+              -     </button>
+              - <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              -	  <span id="needlist">
+              -	  </span>
+                </ul>
+              </div>
+          </div>
+    </div>
+  <br>
+  <br>
+
+  <a href="#" class="btn-lg js-scroll-trigger addReliefRectangle" id="cartURL" target="_blank">ADD RELIEF TO YOUR AMAZON CART</a>
   </form>
+<br>
+<br>
+<br>
+
+<Hh>
+  <div id ="address">
+    <span id="shelterName"></span> needs this item.  Your donation will be shipped there for distribution.
+    <br>
+    <span id="shelterAddress"></span>
+    <div>
+      </h5>
+
 </div>
       </div>
     </header>
