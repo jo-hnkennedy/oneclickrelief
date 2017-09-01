@@ -112,3 +112,40 @@ $("li").click(function() {
 $(document).on("click", function() {
 	addToCart();
 });
+
+function addEvent() {
+
+	//getting the price
+	var price = "";
+	$(".price").each(function() {
+		if ($(this).hasClass("active")) {
+			price = $(this).text();
+		}	
+	});
+		
+	price = parseInt(price.substr(1));	
+
+	//getting the item that's active in the dropdown
+	var selectedItem = $(".defaultprice").text();
+	console.log("item=" + selectedItem);
+	var selectedAmazonId = "";
+	var itemPrice;
+
+	items.forEach(function(element) {
+		if(selectedItem === element["name"]) {	
+			console.log("Found item");
+			selectedAmazonId = element["amazonID"];
+			itemPrice = parseInt(element["price"]);
+		}
+	});	
+
+	var quantity = parseInt(price / itemPrice);
+
+	console.log(selectedAmazonId);
+	console.log(quantity);
+
+	//linking the selected item to an item in the item data
+
+	$.getJSON("add_event.php", {"quantity":quantity, "asin":selectedAmazonId}, function(data) {
+	});
+}
