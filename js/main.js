@@ -16,8 +16,9 @@ function setShelter(data) {
 	setPrices(primaryName);
 
 	// otherwise filling the dropdown with needs
-	data.needs.forEach(function(shelterNeed) {
-		$("#needlist").append('<li><a class="needItem" tabindex="-1">' + shelterNeed + '</a></li>');
+	console.log("filling dropdown");
+	items.forEach(function(item) {
+		$("#needlist").append('<li><a class="needItem" tabindex="-1">' + item["name"] + '</a></li>');
 });
 
 	
@@ -96,6 +97,7 @@ $.getJSON("http://www.collegehaxcess.com/houstonian/api.php", function (data) {
 
 $(document).on("click", ".needItem", function() {
 	//setting the default price to the name
+	console.log("setting default price to " + $(this).text());
 	$(".defaultprice:first-child").text($(this).text());
 	$(".defaultprice:first-child").val($(this).text());
 	$("#firstprice").val($(this).text());
