@@ -2,20 +2,31 @@ var itemData = '[{"price": "20", "amazonID": "B002BW7QCU", "name": "Air Mattress
 
 items = JSON.parse(itemData);
 
+//setting shelter data by pulling the random shelter and its need from the API
 function setShelter(data) {
 	var primaryIndex = Math.floor(Math.random() * data.needs.length);
 	var primaryName = data.needs[primaryIndex]
 	data.needs.splice(primaryIndex);
 	$("#shelterName").text(data.name);
-	$("#shippingAddress").text("SHIP TO: " + data.address);
+	$("#shippingAddress").text(data.address);
 
 	// making the default need primaryName
 	$("#firstprice").text(primaryName);
 
 	setPrices(primaryName);
+
+	// otherwise filling the dropdown with needs
+	data.needs.forEach(function(shelterNeed) {
+		$("#needlist").append('<li><a tabindex="-1">' + shelterNeed + '</a></li>');
+});
+
 	
+
 	
-	addToCart(primaryName);
+
+
+
+	addToCart();
 }
 
 function setPrice(item) {
@@ -26,7 +37,7 @@ function setPrice(item) {
 	});
 }
 
-function addToCart(primaryName) {
+function addToCart() {
 	console.log("Setting cartURL");
 
 	//getting the price
@@ -41,7 +52,7 @@ function addToCart(primaryName) {
 	console.log("price=" + price);
 
 	//getting the item that's active in the dropdown
-	var selectedItem = primaryName;
+	var selectedItem = $(".defaultprice").text();
 	console.log("item=" + selectedItem);
 	var selectedAmazonId = "";
 	var itemPrice;
@@ -104,4 +115,3 @@ $("li").click(function() {
 $(document).on("click", function() {
 	addToCart();
 });
-

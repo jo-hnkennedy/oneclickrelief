@@ -50,8 +50,49 @@
    
      font-weight: bold;
  }
- 
 
+
+.btn.defaultprice{
+         margin-top: 1% !important;
+    padding-top: 10px !important;
+    padding-bottom: 11px !important;
+    background: white;
+ }
+
+ .btn.dropdown-toggle{
+      margin-top: 1% !important;
+    padding-top: 10px !important;
+    padding-bottom: 11px !important;
+    background: #164EB4;
+    color: white;
+
+ }
+
+
+ 
+ .btn-lg.js-scroll-trigger.price{
+     border: 0;
+     background: #9ED5B0;
+ }
+
+  .btn-lg.js-scroll-trigger.price.active{
+      border: 0;
+     background: #298446;
+ }
+
+.btn.itemText{
+    background: white;
+}
+
+.btn-lg.js-scroll-trigger.addReliefRectangle{
+    background: #FF9900;
+    color: white;
+
+}
+
+#address{
+    color: white;
+}
   .gallery-title
   {
       font-size: 36px;
