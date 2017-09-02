@@ -193,6 +193,10 @@
     text-align: center;
 }
 
+.donate {
+    margin: unset !important;
+}
+
 .btn.defaultprice {
     margin-top: 1% !important;
     padding-top: 10px !important;
