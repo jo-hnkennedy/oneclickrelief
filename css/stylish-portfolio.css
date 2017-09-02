@@ -10,9 +10,11 @@
 @media only screen and (max-width: 500px) and (min-width: 415px) {
     #price-group {
         padding-left: 25%;
+        width: -webkit-fill-available !important;
     }
     #needs {
         padding-left: 19%;
+        width: -webkit-fill-available !important;
     }
     .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
         width: 230px;
@@ -30,9 +32,11 @@
     #price-group {
         padding-left: 23% !important;
         padding-bottom: 4%;
+        width: -webkit-fill-available !important;
     }
     #needs {
         padding-left: 14% !important;
+        width: -webkit-fill-available !important;
     }
     .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
         width: 230px;
@@ -56,6 +60,7 @@
     #price-group {
         padding-left: 19% !important;
         padding-bottom: 1%
+        width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
         margin-top: -12%;
@@ -71,6 +76,7 @@
     #needs {
         padding-left: 9% !important;
         margin-bottom: -5%;
+        width: -webkit-fill-available !important;
     }
     .btn-lg.js-scroll-trigger.addReliefRectangle {
         font-size: inherit;
@@ -91,6 +97,7 @@
     #price-group {
         padding-left: 24%;
         padding-bottom: 5%
+        width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
         margin-top: -12%
@@ -100,6 +107,7 @@
     }
     #needs {
         padding-left: 17% !important;
+        width: -webkit-fill-available !important;
     }
     .background {
         background: rgba(0, 0, 0, 0.2) !important;
@@ -114,6 +122,7 @@
     #price-group {
         padding-left: 26%;
         padding-bottom: 5%
+        width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
         margin-top: -7%
@@ -124,6 +133,7 @@
     #needs {
         display: inline-block;
         padding-left: 19%;
+        width: -webkit-fill-available !important;
     }
     .background {
         background: rgba(0, 0, 0, 0.2) !important;
@@ -185,40 +195,66 @@
     font-weight: bold;
 }
 
-#shelterAddress {
-    width: 300px;
-    border: none;
-    background: transparent;
-    color: white;
-    text-align: center;
+.donate {
+    margin: unset !important;
+}
+
+.selectItems {
+    width: 239px;
+    height: 50px;
 }
 
 .btn.defaultprice {
     margin-top: 1% !important;
     padding-top: 10px !important;
     padding-bottom: 11px !important;
-    background: white;
-    color: #164EB4;
+    background: url(../assets/dropdown_background.png);
+    color: #446777;
+    font-size: 18px;
+    width: 189px;
 }
 
 .btn.dropdown-toggle {
     margin-top: 1% !important;
     padding-top: 10px !important;
     padding-bottom: 11px !important;
-    background: #164EB4;
+    background: url(../assets/dropdown_arrowcontainer.png);
     color: white;
+    width: 50px;
+}
+
+.dropdown-menu-right {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.dropdown-item {
+    padding-top: 5px;
+    padding-bottom: 0px;
+    font-size: 18px;
 }
 
 .btn-lg.js-scroll-trigger.price {
-    border: 0;
-    background: #9ED5B0;
     color: white;
+    border-radius: 2px;
+    background-color: #9ed5b0;
+    border-color: #9ed5b0;
+    border-style: outset;
+    height: 50px;
+    width: 50px;
+    font-size: 24px;
+    padding: unset;
+}
+
+#oneclickrelief {
+    color: #ffffff !important;
+    font-size: 90px;
 }
 
 .btn-lg.js-scroll-trigger.price.active {
-    border: 0;
-    background: #298446;
-    color: white;
+    background-color: #298446;
+    border-color: #298446;
+    border-style: inset;
 }
 
 .btn.itemText {
@@ -230,9 +266,33 @@
     color: white;
 }
 
-#address {
-    color: white;
+#addressheader {
+    margin-top: 50px;
 }
+
+.address {
+    margin-top: 10px;
+    display: inline-block;
+    color: #446777;
+    background: url(../assets/shiptoaddress_background.png);
+    height: 134px;
+    width: 256px;
+}
+
+#copy_button {
+    width: -webkit-fill-available !important;
+    height: 30px;
+    padding-bottom: unset;
+    padding-top: unset;
+    background: #FF9900;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.add-to-cart {
+    margin-top: 59px;
+}
+
 
 .gallery-title {
     font-size: 36px;

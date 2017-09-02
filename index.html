@@ -52,8 +52,10 @@
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVVWLDM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVVWLDM" height="0" width="0" style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <script>
@@ -95,39 +97,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header class="header" id="top">
         <div class="text-vertical-center heading">
             <div id="background">
-                <h1>One Click Relief</h1>
-                <h4>Give Houston Shelters What They Need</h4>
+                <h1 id="oneclickrelief">One Click Relief</h1>
+                <h2>Give Houston Shelters What They Need</h2>
                 </br>
                 </br>
+
+                <h3>Your donation will benifit <span id="shelterName"></span></h3>
+                </br>
+
                 <div class="container">
                     <div class="row justify-content-md-center">
-                        <h2 class="col-12 col-md-auto">DONATE</h2>
-                        <div class="btn-group" id="price-group" role="group" aria-label="Basic example">
-                            <button type="checkbox" class="btn-lg js-scroll-trigger price" id="mainPrice">$10</button>
-                            <button type="checkbox" class="btn-lg js-scroll-trigger price active" id="doublePrice">$20</button>
-                            <button type="checkbox" class="btn-lg js-scroll-trigger price" id="triplePrice">$30</button>
-                        </div>
-
-                        <h2 class="col-12 col-md-auto">WORTH OF</h2>
+                        <h3 class="col-md-auto align-self-center donate">DONATE</h3>
                         <div id="needs">
-                            <div class="btn-group">
-                                <button class="btn defaultprice"><span id="firstprice"></span></button>
-                                <button class="btn dropdown-toggle" id="dropdownArrow" data-toggle="dropdown"></button>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <div class="btn-group selectItems">
+                                <button type="button" class="btn defaultprice"><span id="firstprice"></span></button>
+                                <button type="button" class="btn dropdown-toggle-split dropdown-toggle" id="dropdownArrow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu">
                                     <span id="needlist"></span>
                                 </ul>
                             </div>
                         </div>
+
+                        <h3 class="col-md-auto align-self-center donate">WORTH</h3>
+                        <div class="btn-group" id="price-group" role="group" aria-label="Basic example">
+                            <button type="checkbox" class="btn-lg js-scroll-trigger price" id="mainPrice">$10</button>
+                            <span style="padding-right:2px;" /></span>
+                            <button type="checkbox" class="btn-lg js-scroll-trigger price active" id="doublePrice">$20</button>
+                            <span style="padding-right:2px;"></span>
+                            <button type="checkbox" class="btn-lg js-scroll-trigger price" id="triplePrice">$30</button>
+                        </div>
                     </div>
 
+                    <div id="addressheader">
+                        <h3>*At Checkout, shit to this address:</h3>
+                        <div class="address">
+                            <div class="">
+                                <h7><b>SHIP TO Bethel Heavenly Hands Church</b></h7>
+                                <p id="shelterAddress">
+                                    12660 Sandpipers Street
+                                    </br>Houston, TX 77035</p>
+                                <!-- <input id="shelterAddress" type="text" readonly value="535 Portwall Street Houston 77029"> -->
+                                <button id="copy_button" class="btn btn-block" type="button" data-clipboard-target="#shelterAddress">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-to-cart">
+                        <a href="#" class="btn-lg js-scroll-trigger addReliefRectangle" id="cartURL" target="_blank">ADD RELIEF TO YOUR AMAZON CART</a>
+                    </div>
                     </br>
                     </br>
-
-                    <a href="#" class="btn-lg js-scroll-trigger addReliefRectangle" id="cartURL" target="_blank">ADD RELIEF TO YOUR AMAZON CART</a>
                     </br>
-                    </br>
-                    </br>
-                    <div id="address">
+                    <!-- Removing this due to the changes created from design, but incorporated the changes into the display area  -->
+                    <!-- <div id="address">
                         <span id="shelterName"></span> needs this item.</br>To get it there, <b><u>SHIP TO Bethel Heavenly Hands Church</b></u>
                         </br>
                         </br>
@@ -137,7 +162,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <img class="clippy" src="img/clippy.svg" width="13" alt="Copy to clipboard">
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
