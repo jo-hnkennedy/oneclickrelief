@@ -33,6 +33,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel=icon href="img/favicon.png">
+
     <title>One Click Relief</title>
 
     <!-- Bootstrap Core CSS -->
@@ -63,7 +65,7 @@
                 if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");
                 else {
                     analytics.invoked = !0;
-                    analytics.methods = ["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];
+                    analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];
                     analytics.factory = function(t) {
                         return function() {
                             var e = Array.prototype.slice.call(arguments);
@@ -78,19 +80,18 @@
                     }
                     analytics.load = function(t) {
                         var e = document.createElement("script");
-                        e.type ="text/javascript";
+                        e.type = "text/javascript";
                         e.async = !0;
-                        e.src = ("https:" === document.location.protocol ?"https://" :"http://") +"cdn.segment.com/analytics.js/v1/" + t +"/analytics.min.js";
+                        e.src = ("https:" === document.location.protocol ? "https://" : "http://") + "cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
                         var n = document.getElementsByTagName("script")[0];
                         n.parentNode.insertBefore(e, n)
                     };
-                    analytics.SNIPPET_VERSION ="4.0.0";
+                    analytics.SNIPPET_VERSION = "4.0.0";
                     analytics.load("wTXocGRolP0LgAIgPrgPjD5lrLOi4OKT");
                     analytics.page();
                 }
         }();
     </script>
-
     <!-- Header -->
 
     <header class="header" id="top">
@@ -133,10 +134,10 @@
                         <h3>*At Checkout, shit to this address:</h3>
                         <div class="address">
                             <div class="">
-                                <h7><b>Houston Food Bank</b></h7>
-                                <p id="shelterAddress">Attn: Amy R. Ragan
-                                </br>535 Portwall Street
-                                </br>Houston, TX 77029</p>
+                                <h7><b>SHIP TO Bethel Heavenly Hands Church</b></h7>
+                                <p id="shelterAddress">
+                                    12660 Sandpipers Street
+                                    </br>Houston, TX 77035</p>
                                 <!-- <input id="shelterAddress" type="text" readonly value="535 Portwall Street Houston 77029"> -->
                                 <button id="copy_button" class="btn btn-block" type="button" data-clipboard-target="#shelterAddress">
                                     Copy
@@ -150,6 +151,18 @@
                     </br>
                     </br>
                     </br>
+                    <!-- Removing this due to the changes created from design, but incorporated the changes into the display area  -->
+                    <!-- <div id="address">
+                        <span id="shelterName"></span> needs this item.</br>To get it there, <b><u>SHIP TO Bethel Heavenly Hands Church</b></u>
+                        </br>
+                        </br>
+                        <div style="display:inline">
+                            <input id="shelterAddress" type="text" readonly value="12660 Sandpipers Street Houston, TX 77035">
+                            <button id="copy_button" class="btn" type="button" data-clipboard-demo="" data-clipboard-target="#shelterAddress">
+                                <img class="clippy" src="img/clippy.svg" width="13" alt="Copy to clipboard">
+                            </button>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>
