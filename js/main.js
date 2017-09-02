@@ -18,7 +18,7 @@ function setShelter(data) {
     // otherwise filling the dropdown with needs
     console.log("filling dropdown");
     items.forEach(function(item) {
-        $("#needlist").append('<li><a class="needItem" tabindex="-1">' + item["name"] + '</a></li>');
+        $("#needlist").append('<li><a class="needItem dropdown-item" tabindex="-1">' + item["name"] + '</a></li>');
     });
 
     var clipBoard = new Clipboard('#copy_button');

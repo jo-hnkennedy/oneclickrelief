@@ -201,16 +201,25 @@
     margin-top: 1% !important;
     padding-top: 10px !important;
     padding-bottom: 11px !important;
-    background: white;
+    background: url(../assets/dropdown_background.png);
     color: #164EB4;
+}
+
+.caret {
+    background: url(../assets/dropdown_arrow.png);
 }
 
 .btn.dropdown-toggle {
     margin-top: 1% !important;
     padding-top: 10px !important;
     padding-bottom: 11px !important;
-    background: #164EB4;
+    background: url(../assets/dropdown_arrowcontainer.png);
     color: white;
+}
+
+.dropdown-menu-right {
+    height: 200px;
+    overflow-y: scroll;
 }
 
 .btn-lg.js-scroll-trigger.price {
