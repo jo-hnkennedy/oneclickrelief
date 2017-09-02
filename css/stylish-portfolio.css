@@ -197,12 +197,19 @@
     margin: unset !important;
 }
 
+.selectItems {
+    width: 239px;
+    height: 50px;
+}
+
 .btn.defaultprice {
     margin-top: 1% !important;
     padding-top: 10px !important;
     padding-bottom: 11px !important;
     background: url(../assets/dropdown_background.png);
-    color: #164EB4;
+    color: #446777;
+    font-size: 18px;
+    width: 189px;
 }
 
 .caret {
@@ -215,6 +222,7 @@
     padding-bottom: 11px !important;
     background: url(../assets/dropdown_arrowcontainer.png);
     color: white;
+    width: 50px;
 }
 
 .dropdown-menu-right {
@@ -222,16 +230,33 @@
     overflow-y: scroll;
 }
 
+.dropdown-item {
+    padding-top: 5px;
+    padding-bottom: 0px;
+    font-size: 18px;
+}
+
 .btn-lg.js-scroll-trigger.price {
-    border: 0;
-    background: #9ED5B0;
     color: white;
+    border-radius: 2px;
+    background-color: #9ed5b0;
+    border-color: #9ed5b0;
+    border-style: outset;
+    height: 50px;
+    width: 50px;
+    font-size: 24px;
+    padding: unset;
+}
+
+#oneclickrelief {
+    color: #ffffff !important;
+    font-size: 90px;
 }
 
 .btn-lg.js-scroll-trigger.price.active {
-    border: 0;
-    background: #298446;
-    color: white;
+    background-color: #298446;
+    border-color: #298446;
+    border-style: inset;
 }
 
 .btn.itemText {
