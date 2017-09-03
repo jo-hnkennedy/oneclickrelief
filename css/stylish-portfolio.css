@@ -59,8 +59,7 @@
 @media only screen and (max-width: 320px) {
     #price-group {
         padding-left: 19% !important;
-        padding-bottom: 1%
-        width: -webkit-fill-available !important;
+        padding-bottom: 1% width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
         margin-top: -12%;
@@ -96,8 +95,7 @@
 @media only screen and (max-width: 375px) and (min-width: 361px) {
     #price-group {
         padding-left: 24%;
-        padding-bottom: 5%
-        width: -webkit-fill-available !important;
+        padding-bottom: 5% width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
         margin-top: -12%
@@ -121,8 +119,7 @@
 @media only screen and (max-width: 414px) and (min-width: 376px) {
     #price-group {
         padding-left: 26%;
-        padding-bottom: 5%
-        width: -webkit-fill-available !important;
+        padding-bottom: 5% width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
         margin-top: -7%
@@ -226,6 +223,7 @@
 .dropdown-menu-right {
     height: 200px;
     overflow-y: scroll;
+    width: 239px;
 }
 
 .dropdown-item {
@@ -292,7 +290,6 @@
 .add-to-cart {
     margin-top: 59px;
 }
-
 
 .gallery-title {
     font-size: 36px;
