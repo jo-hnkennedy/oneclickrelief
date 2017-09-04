@@ -1,7 +1,12 @@
 items = []
 
 $.getJSON("https://api.harveyneeds.org/api/v1/products", function(data) {
-	items = data.products;
+	var blockedCategories = ["Books", "Appliances"];
+	data.products.forEach(function(item) {
+		if (! blockedCategories.includes(item.category_general)) {
+			items.push(item);
+		}
+	});
 	fillNeeds(items);
 });
 
@@ -100,11 +105,21 @@ function addToCart() {
 			selectedAmazonId = element.asin;
 			itemPrice = getPrice(selectedAmazonId); 
 			console.log("itemPrice: " + itemPrice);
-			break;
+			if (itemPrice < 60) {
+				break;
+			}
+			else {
+				console.log("Item price too big, trying again");
+			}
 		}
 	}
 
 	var quantity = parseInt(price / itemPrice);
+
+	if (quantity.isNan || quantity === 0) {
+		console.log("quantity is NaN");
+		quantity = 1;
+	} 
 
 	console.log(selectedAmazonId);
 	console.log(quantity);
