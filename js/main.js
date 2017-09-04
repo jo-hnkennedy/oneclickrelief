@@ -1,37 +1,67 @@
-var itemData = '[{"price": "20", "amazonID": "B002BW7QCU", "name": "Air Mattresses"}, {"price": "20", "amazonID": "B00XCLFZLS", "name": "Baby Food"}, {"price": "10", "amazonID": "B001U2HRL", "name": "Baby Formula"}, {"price": "10", "amazonID": "B00FW6TNJQ", "name": "Baby Items"}, {"price": "30", "amazonID": "B008KJQMA0", "name": "Baby Wipes"}, {"price": "30", "amazonID": "B00NLLUMOE", "name": "Bed Linens"}, {"price": "20", "amazonID": "B00J7B8T5Q", "name": "Blankets"}, {"price": "30", "amazonID": "B01MYWUDP7", "name": "Canes"}, {"price": "10", "amazonID": "B07434ZKFM", "name": "Charging Cables"}, {"price": "10", "amazonID": "B00HSC9F2C", "name": "Cleaning Supplies"}, {"price": "20", "amazonID": "B00KBZOR9O", "name": "Clothing"}, {"price": "10", "amazonID": "B00TFXH3F8", "name": "Diapers"}, {"price": "20", "amazonID": "B01ADWNVGE", "name": "Food Items"}, {"price": "5", "amazonID": "B00I4R6STS", "name": "Gloves"}, {"price": "20", "amazonID": "B072FL4V84", "name": "Granola Bars"}, {"price": "20", "amazonID": "B000HVVCO0", "name": "Medical Supplies"}, {"price": "10", "amazonID": "B01CLHQZOY", "name": "Non-perishable Food"}, {"price": "30", "amazonID": "B00CFCSVQG", "name": "Packing Supplies"}, {"price": "10", "amazonID": "B019XEY5GS", "name": "Paper Towels"}, {"price": "10", "amazonID": "B00SV4T6O8", "name": "Pasta"}, {"price": "30", "amazonID": "B00BD76MRY", "name": "Pet Items"}, {"price": "10", "amazonID": "B06XKK1N41", "name": "Pillow Cases"}, {"price": "20", "amazonID": "B01E9IPB5C", "name": "Pillows"}, {"price": "10", "amazonID": "B01DN8TPG0", "name": "Sharpies"}, {"price": "10", "amazonID": "B001NKDAKS", "name": "Sheetrock Cutters"}, {"price": "30", "amazonID": "B073S7SZ1L", "name": "Shoes"}, {"price": "10", "amazonID": "B00E4I4XS4", "name": "Socks"}, {"price": "40", "amazonID": "B00C6OV63S", "name": "Suitcases"}, {"price": "20", "amazonID": "B01GTNVWYO", "name": "Toilet Paper"}, {"price": "20", "amazonID": "B00INVCHCC", "name": "Toiletries"}, {"price": "20", "amazonID": "B010S5VXKC", "name": "Towels"}, {"price": "10", "amazonID": "B00ASBOP9S", "name": "Trash Bags"}, {"price": "10", "amazonID": "B01MPYJK69", "name": "Underwear"}, {"price": "10", "amazonID": "B00LLKWVL4", "name": "Water"}, {"price": "100", "amazonID": "B0013Z1Z00", "name": "Wheelchairs"}]';
+items = []
 
-items = JSON.parse(itemData);
+$.getJSON("https://api.harveyneeds.org/api/v1/products", function(data) {
+	items = data.products;
+	fillNeeds(items);
+});
 
-//setting shelter data by pulling the random shelter and its need from the API
-function setShelter(data) {
-    var primaryIndex = Math.floor(Math.random() * data.needs.length);
-    var primaryName = data.needs[primaryIndex]
-    data.needs.splice(primaryIndex);
-    $("#shelterName").text(data.name);
-    $("#shippingAddress").text(data.address);
+/**
+ * Shuffles array in place.
+ * @param {Array} a items The array containing the items.
+ */
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+	return a;
+}
 
-    // making the default need primaryName
-    $("#firstprice").text(primaryName);
+function getPrice(asin) {
+	return parseInt($.ajax({ 
+      		url: 'get_price.php', 
+		data: {"ASIN": asin},	
+      		async: false
+   	}).responseText);
+}
 
-    setPrices(primaryName);
+function fillNeeds(items) {
 
-    // otherwise filling the dropdown with needs
-    console.log("filling dropdown");
-    items.forEach(function(item) {
-        $("#needlist").append('<li><a class="needItem dropdown-item" tabindex="-1">' + item["name"] + '</a></li>');
-    });
+	var randomItem = items[Math.floor(Math.random()*items.length)];
 
-    var clipBoard = new Clipboard('#copy_button');
-    clipBoard.on('success', function(e) {
-        e.clearSelection();
-        showTooltip(e.trigger, 'Copied!');
-    });
+	console.log("randomItem: ");
+	setPrices(getPrice(randomItem.asin));
 
-    clipBoard.on('error', function(e) {
-        showTooltip(e.trigger, fallbackMessage(e.action));
-    });
+	$("#firstprice").text(randomItem.category_specific);
 
-    addToCart();
+	// otherwise filling the dropdown with needs
+	console.log("filling dropdown");
+	general_categories = [];
+	items.forEach(function(item) {
+		if (general_categories.includes(item.category_general)) {	
+		}
+		else {
+			general_categories.push(item.category_general);
+		}
+	});
+	general_categories.forEach(function(category) {
+		$("#needlist").append('<li><a class="needItem dropdown-item" tabindex="-1">' + category + '</a></li>');
+	});
+
+	var clipBoard = new Clipboard('#copy_button');
+	clipBoard.on('success', function(e) {
+	e.clearSelection();
+	showTooltip(e.trigger, 'Copied!');
+	});
+
+	clipBoard.on('error', function(e) {
+	showTooltip(e.trigger, fallbackMessage(e.action));
+	});
+
+	addToCart();
 }
 
 function setPrice(item) {
@@ -43,55 +73,54 @@ function setPrice(item) {
 }
 
 function addToCart() {
-    console.log("Setting cartURL");
+	console.log("Setting cartURL");
 
-    //getting the price
-    var price = "";
-    $(".price").each(function() {
-        if ($(this).hasClass("active")) {
-            price = $(this).text();
-        }
-    });
+	//getting the price
+	var price = "";
+	$(".price").each(function() {
+		if ($(this).hasClass("active")) {
+		    price = $(this).text();
+		}
+	});
 
-    price = parseInt(price.substr(1));
-    console.log("price=" + price);
+	price = parseInt(price.substr(1));
 
-    //getting the item that's active in the dropdown
-    var selectedItem = $(".defaultprice").text();
-    console.log("item=" + selectedItem);
-    var selectedAmazonId = "";
-    var itemPrice;
+	//getting the item that's active in the dropdown
+	var selectedItem = $(".defaultprice").text();
+	console.log("item=" + selectedItem);
+	var selectedAmazonId = "";
+	var itemPrice;
 
-    items.forEach(function(element) {
-        if (selectedItem === element["name"]) {
-            console.log("Found item");
-            selectedAmazonId = element["amazonID"];
-            itemPrice = parseInt(element["price"]);
-        }
-    });
+	randomItems = shuffle(items);
 
-    var quantity = parseInt(price / itemPrice);
+	for (var i = 0; i < randomItems.length; i++) {
+		var element = randomItems[i];
+		if (selectedItem === element.category_general || selectedItem === element.category_specific) {
+			console.log("Found item: " + element.amazon_title);
+			selectedAmazonId = element.asin;
+			itemPrice = getPrice(selectedAmazonId); 
+			console.log("itemPrice: " + itemPrice);
+			break;
+		}
+	}
 
-    console.log(selectedAmazonId);
-    console.log(quantity);
+	var quantity = parseInt(price / itemPrice);
 
-    //linking the selected item to an item in the item data
+	console.log(selectedAmazonId);
+	console.log(quantity);
 
-    $.getJSON("add.php", { "quantity": quantity, "amazonID": selectedAmazonId }, function(data) {
-        $("#cartURL").attr("href", data.url[0]);
-    });
+	//linking the selected item to an item in the item data
+
+	$.getJSON("add.php", { "quantity": quantity, "amazonID": selectedAmazonId }, function(data) {
+		console.log(data);
+		$("#cartURL").attr("href", data.url[0]);
+	});
 }
 
-function setPrices(selectedItem) {
-    //getting prices on item
-    items.forEach(function(item) {
-        if (item["name"] === selectedItem) {
-            console.log(item);
-            $("#mainPrice").text("$" + item["price"]);
-            $("#doublePrice").text("$" + (2 * parseInt(item["price"])));
-            $("#triplePrice").text("$" + (3 * parseInt(item["price"])));
-        }
-    });
+function setPrices(firstPrice) {
+    $("#mainPrice").text("$" + firstPrice);
+    $("#doublePrice").text("$" + (2 * firstPrice));
+    $("#triplePrice").text("$" + (3 * firstPrice));
 }
 
 $('.price').click(function() {
@@ -100,18 +129,27 @@ $('.price').click(function() {
     $(this).addClass('active');
 });
 
-$.getJSON("http://www.collegehaxcess.com/houstonian/api.php", function(data) {
-    setShelter(data);
-});
-
 $(document).on("click", ".needItem", function() {
     //setting the default price to the name
-    console.log("setting default price to " + $(this).text());
-    $(".defaultprice:first-child").text($(this).text());
-    $(".defaultprice:first-child").val($(this).text());
-    $("#firstprice").val($(this).text());
-    setPrices($(this).text());
+	console.log("setting default price to " + $(this).text());
+	$(".defaultprice:first-child").text($(this).text());
+	$(".defaultprice:first-child").val($(this).text());
+	$("#firstprice").val($(this).text());
 
+	randomItems = shuffle(items);
+
+	console.log("shuffling");
+	var selectedItem = $(".defaultprice").text();
+	for (var i = 0; i < randomItems.length; i++) {
+		var element = randomItems[i];
+		if (selectedItem === element.category_general || selectedItem === element.category_specific) {
+			console.log("adding element " + element.amazon_title);
+			setPrices(getPrice(element.asin));
+			addToCart();
+			break;
+		}
+	}
+	
 });
 
 $("li").click(function() {
