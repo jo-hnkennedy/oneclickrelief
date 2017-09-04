@@ -59,7 +59,7 @@
 @media only screen and (max-width: 320px) {
     #price-group {
         padding-left: 19% !important;
-        padding-bottom: 1%
+        padding-bottom: 1%;
         width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
@@ -96,7 +96,7 @@
 @media only screen and (max-width: 375px) and (min-width: 361px) {
     #price-group {
         padding-left: 24%;
-        padding-bottom: 5%
+        padding-bottom: 5%;
         width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
@@ -121,7 +121,7 @@
 @media only screen and (max-width: 414px) and (min-width: 376px) {
     #price-group {
         padding-left: 26%;
-        padding-bottom: 5%
+        padding-bottom: 5%;
         width: -webkit-fill-available !important;
     }
     .text-vertical-center.heading h2#donate {
@@ -152,6 +152,8 @@
 
 
 /*custom styles*/
+
+
 
 .text-vertical-center.heading {
     vertical-align: top !important;
@@ -587,7 +589,7 @@ hr.small {
     display: table;
     width: 100%;
     height: 100%;
-    background: url(../img/bg1.jpg) no-repeat center center scroll;
+    background: url(../img/bg1.jpg) no-repeat center center scroll rgba(0, 0, 0, .4);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -601,6 +603,36 @@ hr.small {
     padding: 50px 0;
 }
 
+.aboutUsHeader{
+    color: #164EB4;
+    font-size: 65px;
+    font-family: Avenir-Heavy;
+    padding-bottom: 22px;
+  
+}
+
+.aboutUsBody{
+    color: black;
+    font-size: 28px;
+    font-family: ArialMT;
+   
+}
+
+/** How it Works **/
+
+.howItWorksHeader{
+    color: #FF9900;
+    font-size: 65px;
+    font-family: Avenir-Heavy;
+    padding-bottom: 22px;
+}
+.howItWorksBody{
+    color: black;
+    font-size: 28px;
+    font-family: ArialMT;
+     margin-bottom:-50px;
+  /*  padding-bottom:40px;*/
+}
 
 /* Services */
 
@@ -610,6 +642,14 @@ hr.small {
 
 .service-item {
     margin-bottom: 30px;
+}
+
+/*Notes*/
+.notesBody{
+    color: #445677;
+    font-family: Arial-ItalicMT;
+    font-size: 20px;
+
 }
 
 
