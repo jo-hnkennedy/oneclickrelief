@@ -153,8 +153,6 @@
 
 /*custom styles*/
 
-
-
 .text-vertical-center.heading {
     vertical-align: top !important;
     padding-top: 2%;
@@ -228,6 +226,7 @@
 .dropdown-menu-right {
     height: 200px;
     overflow-y: scroll;
+    width: 239px;
 }
 
 .dropdown-item {
@@ -294,7 +293,6 @@
 .add-to-cart {
     margin-top: 59px;
 }
-
 
 .gallery-title {
     font-size: 36px;
@@ -603,36 +601,37 @@ hr.small {
     padding: 50px 0;
 }
 
-.aboutUsHeader{
+.aboutUsHeader {
     color: #164EB4;
     font-size: 65px;
     font-family: Avenir-Heavy;
     padding-bottom: 22px;
-  
 }
 
-.aboutUsBody{
+.aboutUsBody {
     color: black;
     font-size: 28px;
     font-family: ArialMT;
-   
 }
+
 
 /** How it Works **/
 
-.howItWorksHeader{
+.howItWorksHeader {
     color: #FF9900;
     font-size: 65px;
     font-family: Avenir-Heavy;
     padding-bottom: 22px;
 }
-.howItWorksBody{
+
+.howItWorksBody {
     color: black;
     font-size: 28px;
     font-family: ArialMT;
-     margin-bottom:-50px;
-  /*  padding-bottom:40px;*/
+    margin-bottom: -50px;
+    /*  padding-bottom:40px;*/
 }
+
 
 /* Services */
 
@@ -644,12 +643,13 @@ hr.small {
     margin-bottom: 30px;
 }
 
+
 /*Notes*/
-.notesBody{
+
+.notesBody {
     color: #445677;
     font-family: Arial-ItalicMT;
     font-size: 20px;
-
 }
 
 
