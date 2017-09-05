@@ -31,7 +31,7 @@ function getPrice(asin) {
 	return parseInt($.ajax({ 
       		url: 'get_price.php', 
 		data: {"ASIN": asin},	
-      		async: false
+      		async: false,
    	}).responseText);
 }
 
@@ -99,12 +99,14 @@ function addToCart() {
 			selectedAmazonId = element.asin;
 			itemPrice = getPrice(selectedAmazonId); 
 			console.log("itemPrice: " + itemPrice);
+			break;
+			/*
 			if (itemPrice < 60) {
 				break;
 			}
 			else {
 				console.log("Item price too big, trying again");
-			}
+			} */
 		}
 	}
 
