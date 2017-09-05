@@ -1,6 +1,6 @@
 <?php
 
-function roundUpToAny($n,$x=5) {
+function roundUpToAny($n,$x=1) {
     return (round($n)%$x === 0) ? round($n) : round(($n+$x/2)/$x)*$x;
 }
 

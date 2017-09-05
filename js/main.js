@@ -1,7 +1,7 @@
 items = []
 
 $.getJSON("https://api.harveyneeds.org/api/v1/products", function(data) {
-	var blockedCategories = ["Books", "Appliances"];
+	var blockedCategories = ["Books", "Appliances", "Gift Cards", "Electronics"];
 	data.products.forEach(function(item) {
 		if (! blockedCategories.includes(item.category_general)) {
 			items.push(item);
@@ -9,6 +9,8 @@ $.getJSON("https://api.harveyneeds.org/api/v1/products", function(data) {
 	});
 	fillNeeds(items);
 });
+
+console.log(items);
 
 /**
  * Shuffles array in place.
@@ -40,7 +42,7 @@ function fillNeeds(items) {
 	console.log("randomItem: ");
 	setPrices(getPrice(randomItem.asin));
 
-	$("#firstprice").text(randomItem.category_specific);
+	$("#firstprice").text(randomItem.category_general);
 
 	// otherwise filling the dropdown with needs
 	console.log("filling dropdown");
@@ -67,14 +69,6 @@ function fillNeeds(items) {
 	});
 
 	addToCart();
-}
-
-function setPrice(item) {
-    items.forEach(function(element) {
-        if (item === element["name"]) {
-            console.log(item);
-        }
-    });
 }
 
 function addToCart() {
@@ -116,7 +110,7 @@ function addToCart() {
 
 	var quantity = parseInt(price / itemPrice);
 
-	if (quantity.isNan || quantity === 0) {
+	if (Number.isNaN(quantity) || quantity === 0) {
 		console.log("quantity is NaN");
 		quantity = 1;
 	} 
@@ -133,9 +127,12 @@ function addToCart() {
 }
 
 function setPrices(firstPrice) {
-    $("#mainPrice").text("$" + firstPrice);
-    $("#doublePrice").text("$" + (2 * firstPrice));
-    $("#triplePrice").text("$" + (3 * firstPrice));
+	if (Number.isNaN(firstPrice)) {
+		firstPrice = 10;
+	}
+	$("#mainPrice").text("$" + firstPrice);
+	$("#doublePrice").text("$" + (2 * firstPrice));
+	$("#triplePrice").text("$" + (3 * firstPrice));
 }
 
 $('.price').click(function() {
