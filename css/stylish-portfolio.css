@@ -632,6 +632,23 @@ hr.small {
     /*  padding-bottom:40px;*/
 }
 
+/** How it Works **/
+
+.faqHeader {
+    color: #FF9900;
+    font-size: 65px;
+    font-family: Avenir-Heavy;
+    padding-bottom: 22px;
+}
+
+.faqBody {
+    color: black;
+    font-size: 28px;
+    font-family: ArialMT;
+    margin-bottom: -50px;
+    /*  padding-bottom:40px;*/
+}
+
 
 /* Services */
 
