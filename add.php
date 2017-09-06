@@ -1,7 +1,7 @@
 <?php
 
 // Your Access Key ID, as taken from the Your Account page
-$access_key_id = "AKIAI3TEYGLHORQ27CHQ";
+$access_key_id = "AKIAJNSA35FBVPOFER3A",
 
 // Your Secret Key corresponding to the above ID, as taken from the Your Account page
 $secret_key = "KGt1oGFOJ2XW7azNd0wnga0CB4IkmiVSn6FTTUvF";
@@ -16,8 +16,8 @@ header('Content-Type: application/json');
 $params = array(
     "Service" => "AWSECommerceService",
     "Operation" => "CartCreate",
-    "AWSAccessKeyId" => "AKIAI3TEYGLHORQ27CHQ",
-    "AssociateTag" => "oneclickrelie-20",
+    "AWSAccessKeyId" => $access_key_id,
+    "AssociateTag" => "oneclickrel0c-20",
     "Item.1.ASIN" => $_GET["amazonID"],
     "Item.1.Quantity" => $_GET["quantity"],
     "ResponseGroup" => "Cart"
@@ -49,6 +49,7 @@ $signature = base64_encode(hash_hmac("sha256", $string_to_sign, $secret_key, tru
 // Generate the signed URL
 $request_url = 'http://'.$endpoint.$uri.'?'.$canonical_query_string.'&Signature='.rawurlencode($signature);
 
+die($request_url);
 $respXML = file_get_contents($request_url);
 
 $xml = simplexml_load_string($respXML);

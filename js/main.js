@@ -1,7 +1,7 @@
 items = []
 
 $.getJSON("https://api.harveyneeds.org/api/v1/products", function(data) {
-	var blockedCategories = ["Books", "Appliances", "Gift Cards", "Electronics"];
+	var blockedCategories = ["Books", "Appliances", "Gift Cards", "Electronics", "Clothing, Shoes & Jewelry"];
 	data.products.forEach(function(item) {
 		if (! blockedCategories.includes(item.category_general)) {
 			items.push(item);
@@ -27,20 +27,12 @@ function shuffle(a) {
 	return a;
 }
 
-function getPrice(asin) {
-	return parseInt($.ajax({ 
-      		url: 'get_price.php', 
-		data: {"ASIN": asin},	
-      		async: false,
-   	}).responseText);
-}
-
 function fillNeeds(items) {
 
 	var randomItem = items[Math.floor(Math.random()*items.length)];
 
 	console.log("randomItem: ");
-	setPrices(getPrice(randomItem.asin));
+	setPrices(randomItem.price);
 
 	$("#firstprice").text(randomItem.category_general);
 
@@ -97,7 +89,7 @@ function addToCart() {
 		if (selectedItem === element.category_general || selectedItem === element.category_specific) {
 			console.log("Found item: " + element.amazon_title);
 			selectedAmazonId = element.asin;
-			itemPrice = getPrice(selectedAmazonId); 
+			itemPrice = element.price; 
 			console.log("itemPrice: " + itemPrice);
 			break;
 			/*
@@ -110,6 +102,9 @@ function addToCart() {
 		}
 	}
 
+	$("#cartURL").attr("href", "https://www.amazon.com/dp/" + selectedAmazonId + "/");
+
+	/*
 	var quantity = parseInt(price / itemPrice);
 
 	if (Number.isNaN(quantity) || quantity === 0) {
@@ -125,10 +120,11 @@ function addToCart() {
 	$.getJSON("add.php", { "quantity": quantity, "amazonID": selectedAmazonId }, function(data) {
 		console.log(data);
 		$("#cartURL").attr("href", data.url[0]);
-	});
+	}); */
 }
 
-function setPrices(firstPrice) {
+function setPrices(rawPrice) {
+	firstPrice = parseInt(rawPrice.replace("$", rawPrice));
 	if (Number.isNaN(firstPrice)) {
 		firstPrice = 10;
 	}
@@ -158,7 +154,7 @@ $(document).on("click", ".needItem", function() {
 		var element = randomItems[i];
 		if (selectedItem === element.category_general || selectedItem === element.category_specific) {
 			console.log("adding element " + element.amazon_title);
-			setPrices(getPrice(element.asin));
+			setPrices(element.price);
 			addToCart();
 			break;
 		}
