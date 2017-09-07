@@ -102,9 +102,9 @@ function addToCart() {
 		}
 	}
 
-	$("#cartURL").attr("href", "https://www.amazon.com/dp/" + selectedAmazonId + "/");
+	//$("#cartURL").attr("href", "https://www.amazon.com/dp/" + selectedAmazonId + "/");
 
-	/*
+	
 	var quantity = parseInt(price / itemPrice);
 
 	if (Number.isNaN(quantity) || quantity === 0) {
@@ -120,7 +120,7 @@ function addToCart() {
 	$.getJSON("add.php", { "quantity": quantity, "amazonID": selectedAmazonId }, function(data) {
 		console.log(data);
 		$("#cartURL").attr("href", data.url[0]);
-	}); */
+	});
 }
 
 function setPrices(rawPrice) {
